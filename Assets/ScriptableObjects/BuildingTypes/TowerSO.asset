@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb3a1159d84e7374ca55aa08e82e696d, type: 3}
+  m_Name: TowerSO
+  m_EditorClassIdentifier: 
+  NameString: Tower
+  Prefab: {fileID: 4959557494943359782, guid: 3ea6910d3f3b60f47a2dc849be5c0539, type: 3}
+  ResourceGeneratorData:
+    TimerMax: 0
+    ResourceType: {fileID: 0}
+    ResourceDetectionRadius: 0
+    MaxResourceAmount: 0
+  IsResourceGenerator: 0
+  BuildingTypeButtonSprite: {fileID: 21300000, guid: 3a549cd61f4d79e4b996c9978dac641f, type: 3}
+  minConstructionRadius: 7
+  ResourceCosts:
+  - ResourceTypeSO: {fileID: 11400000, guid: 714c9f9ad69e46549a9b516f13445558, type: 2}
+    Cost: 40
+  - ResourceTypeSO: {fileID: 11400000, guid: 8d047461290e34d479eb686d1c138a97, type: 2}
+    Cost: 20
+  HealthAmountMax: 100
+  ConstructionTimerMax: 5
