@@ -26,6 +26,7 @@ public class EnemyWaveManager : MonoBehaviour
     public int WaveNumber => waveNumber;
     public float SpawnWaveTimer => spawnWaveTimer;
     public Vector3 SpawnPosition => spawnPosition;
+
     void Awake()
     {
         Instance = this;
@@ -63,19 +64,17 @@ public class EnemyWaveManager : MonoBehaviour
                 if (remainingEnemySpawnAmount > 0)
                 {
                     nextEnemySpawnTimer -= Time.deltaTime;
-                    Enemy.CreateEnemy(spawnPosition + UtilsClass.GetRandomDirection() * 5);
+                    Enemy.CreateEnemy(spawnPosition + UtilsClass.GetRandomDirection() * 5f);
                     remainingEnemySpawnAmount--;
                     if (nextEnemySpawnTimer <= 0)
                     {
                         nextEnemySpawnTimer = UnityEngine.Random.Range(0f, .3f);
-                        spawnPosition = enemySpawnPosTransformList[UnityEngine.Random.Range(0, enemySpawnPosTransformList.Count)].position;
-                        nextWavePositionTransform.position = spawnPosition;
-                        spawnWaveTimer = spawnWaveTimerMax;
                     }
                 }
                 else
                 {
                     state = State.WaitingToSpawnWave;
+                    spawnWaveTimer = spawnWaveTimerMax;
                 }
                 break;
         }
@@ -84,10 +83,11 @@ public class EnemyWaveManager : MonoBehaviour
     private void SpawnWave()
     {
         remainingEnemySpawnAmount = enemySpawnAmountMax;
-        if (waveNumber > 2) remainingEnemySpawnAmount += Mathf.RoundToInt(Mathf.Log(waveNumber, 1.5f));
-        else remainingEnemySpawnAmount++;
+        remainingEnemySpawnAmount += Mathf.RoundToInt(Mathf.Pow(1.5f, waveNumber));
         waveNumber++;
+        spawnPosition = enemySpawnPosTransformList[UnityEngine.Random.Range(0, enemySpawnPosTransformList.Count)].position;
         OnWaveNumberChanged?.Invoke(this, EventArgs.Empty);
+        nextWavePositionTransform.position = spawnPosition;
         state = State.Spawning;
     }
 }

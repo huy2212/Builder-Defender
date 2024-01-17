@@ -6,6 +6,8 @@ public class HealthBar : MonoBehaviour
 {
     [SerializeField] private HealthSystem healthSystem;
     private Transform barTransform;
+    private Transform separatorContainer;
+    private Transform separatorTemplate;
 
     private void Awake()
     {
@@ -22,6 +24,22 @@ public class HealthBar : MonoBehaviour
         healthSystem.OnHealed += HealthSystem_OnHealed;
         UpdateHealthBar();
         UpdateHealthBarVisible();
+
+        separatorContainer = transform.Find("SeparatorContainer");
+        separatorTemplate = separatorContainer.Find("SeparatorTemplate");
+
+        float barSize = 3f;
+        int healthSeparatorAmount = 10;
+        float separatorDistance = (float)(barSize / healthSystem.HealthAmountMax);
+        Debug.Log(barSize + " " + healthSystem.HealthAmountMax + " " + separatorDistance);
+        int separatorCount = Mathf.FloorToInt(healthSystem.HealthAmountMax / healthSeparatorAmount);
+
+        for (int i = 1; i < separatorCount; i++)
+        {
+            Transform separatorTransform = Instantiate(separatorTemplate, separatorContainer);
+            separatorTransform.gameObject.SetActive(true);
+            separatorTransform.localPosition = new Vector3((float)(separatorDistance * i * healthSeparatorAmount), 0, 0);
+        }
     }
 
     private void HealthSystem_OnHealed(object sender, System.EventArgs e)
@@ -51,5 +69,7 @@ public class HealthBar : MonoBehaviour
         {
             gameObject.SetActive(true);
         }
+        gameObject.SetActive(true);
+
     }
 }

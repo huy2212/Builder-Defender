@@ -15,7 +15,7 @@ public class BuildingGhostOverlay : MonoBehaviour
 
     private void Update()
     {
-        int nearbyResourceAmount = ResourceGenerator.GetNearbyResourceAmount(resourceGeneratorData, transform.position);
+        int nearbyResourceAmount = ResourceGenerator.GetNearbyResourceAmount(resourceGeneratorData, transform.position - transform.localPosition);
         float efficiency = Mathf.RoundToInt((float)nearbyResourceAmount / resourceGeneratorData.MaxResourceAmount * 100);
         transform.Find("Text").GetComponent<TextMeshPro>().SetText($"{efficiency}%");
     }

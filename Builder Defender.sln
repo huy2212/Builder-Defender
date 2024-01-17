@@ -107,6 +107,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.ShaderGraph.Utilities
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.2D.Aseprite.Common", "Unity.2D.Aseprite.Common.csproj", "{a7871085-9777-e75b-e664-d7837c1984f3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.Play.Publisher.Editor", "Unity.Play.Publisher.Editor.csproj", "{3b8dbd83-419c-41e9-829f-ed976ab74b32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.Settings.Editor", "Unity.Settings.Editor.csproj", "{51f2b93a-15e5-65c9-cbe8-ad1534f3b691}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.InternalAPIEditorBridgeDev.001", "Unity.InternalAPIEditorBridgeDev.001.csproj", "{2e877fe0-90e3-1889-dec7-156f6c1b3270}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.EditorCoroutines.Editor", "Unity.EditorCoroutines.Editor.csproj", "{8edaf0a2-4524-15ee-ada6-2ed15cb3ea6d}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -218,6 +226,14 @@ Global
 		{355366a3-51c7-5f7a-946d-eb4c4ae9d049}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{a7871085-9777-e75b-e664-d7837c1984f3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{a7871085-9777-e75b-e664-d7837c1984f3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3b8dbd83-419c-41e9-829f-ed976ab74b32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3b8dbd83-419c-41e9-829f-ed976ab74b32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51f2b93a-15e5-65c9-cbe8-ad1534f3b691}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51f2b93a-15e5-65c9-cbe8-ad1534f3b691}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2e877fe0-90e3-1889-dec7-156f6c1b3270}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2e877fe0-90e3-1889-dec7-156f6c1b3270}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8edaf0a2-4524-15ee-ada6-2ed15cb3ea6d}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8edaf0a2-4524-15ee-ada6-2ed15cb3ea6d}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

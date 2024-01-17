@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
@@ -19,6 +20,7 @@ public class Enemy : MonoBehaviour
     private new Rigidbody2D rigidbody2D;
     private float lookForTargetTimer;
     private float lookForTargetTimerMax = .4f;
+    private Transform enemyDieParticles;
     [SerializeField] private float detectRange = 10f;
     [SerializeField] private float moveSpeed = 6f;
     [SerializeField] private int damage = 10;
@@ -32,15 +34,26 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         healthSystem.OnDied += HealthSystem_OnDied;
+        healthSystem.OnDamaged += HealthSystem_OnDamaged;
         if (BuildingManager.Instance.HQBuilding != null)
         {
             targetTransform = BuildingManager.Instance.HQBuilding.transform;
         }
+        enemyDieParticles = Resources.Load<Transform>("pfEnemyDieParticles");
+    }
+
+    private void HealthSystem_OnDamaged(object sender, EventArgs e)
+    {
+        SoundManager.Instance.PlaySound(SoundType.EnemyHit);
+        CinemachineShake.Instance.ShakeCamera(4f, .1f);
     }
 
     private void HealthSystem_OnDied(object sender, System.EventArgs e)
     {
         Destroy(gameObject);
+        CinemachineShake.Instance.ShakeCamera(6f, .15f);
+        SoundManager.Instance.PlaySound(SoundType.EnemyDie);
+        Instantiate(enemyDieParticles, transform.position, Quaternion.identity);
     }
 
     private void Update()
@@ -93,7 +106,7 @@ public class Enemy : MonoBehaviour
         foreach (Collider2D collider2D in collider2Ds)
         {
             Building building = collider2D.transform.GetComponent<Building>();
-            if (building != null)
+            if (building != null && targetTransform != null)
             {
                 if (Vector3.Distance(transform.position, building.transform.position) <
                 Vector3.Distance(transform.position, targetTransform.position))

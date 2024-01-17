@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using System;
-using UnityEngine.UIElements;
-using UnityEditor.VersionControl;
-using UnityEngine.Diagnostics;
 
 public class BuildingManager : MonoBehaviour
 {
@@ -36,6 +33,7 @@ public class BuildingManager : MonoBehaviour
 
     private void HQ_OnDied(object sender, EventArgs e)
     {
+        SoundManager.Instance.PlaySound(SoundType.GameOver);
         OnHQDied?.Invoke();
     }
 
@@ -52,6 +50,7 @@ public class BuildingManager : MonoBehaviour
                         ResourceManager.Instance.SpendResources(activeBuildingType.ResourceCosts);
                         // Instantiate(activeBuildingType.Prefab, UtilsClass.GetMouseWorldPosition(), Quaternion.identity);
                         BuildingConstruction.Create(UtilsClass.GetMouseWorldPosition(), activeBuildingType);
+                        SoundManager.Instance.PlaySound(SoundType.BuildingPlaced);
                     }
                     else
                     {
@@ -64,12 +63,6 @@ public class BuildingManager : MonoBehaviour
                     TooltipUI.Instance.Show(message, new TooltipUI.TooltipTimer { Timer = 2f });
                 }
             }
-        }
-
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            Vector3 enemySpawnPosition = UtilsClass.GetMouseWorldPosition() + UtilsClass.GetRandomDirection() * 5;
-            Enemy.CreateEnemy(enemySpawnPosition);
         }
     }
 
@@ -91,7 +84,7 @@ public class BuildingManager : MonoBehaviour
 
         if (collider2Ds.Length > 0)
         {
-            message = "Can not place building over existed building!";
+            message = "Can only place building over empty area!";
             return false;
         }
 
@@ -106,6 +99,18 @@ public class BuildingManager : MonoBehaviour
                     message = "Can not place buildings have the same type too close!";
                     return false;
                 }
+            }
+        }
+
+        if (buildingType.IsResourceGenerator)
+        {
+            ResourceGeneratorData resourceGeneratorData = buildingType.ResourceGeneratorData;
+            int nearbyResourceAmount = ResourceGenerator.GetNearbyResourceAmount(resourceGeneratorData, position);
+
+            if (nearbyResourceAmount == 0)
+            {
+                message = "No resource nodes nearby!";
+                return false;
             }
         }
 

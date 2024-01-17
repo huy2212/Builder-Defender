@@ -9,6 +9,7 @@ public class Building : MonoBehaviour
     private BuildingTypeSO buildingType;
     private Transform buildingDemolishBtn;
     private Transform buildingRepairBtn;
+    private Transform buildingDieParticle;
 
     private void Awake()
     {
@@ -22,6 +23,7 @@ public class Building : MonoBehaviour
         healthSystem = GetComponent<HealthSystem>();
         buildingType = GetComponent<BuildingTypeHolder>().BuildingType;
         healthSystem.SetHealthAmountMax(buildingType.HealthAmountMax, true);
+        buildingDieParticle = Resources.Load<Transform>("pfBuildingDestroyedParticles");
     }
 
     void OnEnable()
@@ -46,12 +48,17 @@ public class Building : MonoBehaviour
 
     private void HealthSystem_OnDamaged(object sender, System.EventArgs e)
     {
+        CinemachineShake.Instance.ShakeCamera(6f, .15f);
         ShowBuildingRepairButton();
+        SoundManager.Instance.PlaySound(SoundType.BuildingDamaged);
     }
 
     private void HealthSystem_OnDied(object sender, System.EventArgs e)
     {
+        CinemachineShake.Instance.ShakeCamera(8f, .2f);
         Destroy(gameObject);
+        Instantiate(buildingDieParticle, transform.position, Quaternion.identity);
+        SoundManager.Instance.PlaySound(SoundType.BuildingDestroyed);
     }
 
     void OnMouseEnter()

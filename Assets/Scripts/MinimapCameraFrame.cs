@@ -7,7 +7,6 @@ public class MinimapCameraFrame : MonoBehaviour
     [SerializeField] private CameraHandler cameraHandler;
     private SpriteRenderer spriteRenderer;
     private Vector2 startingSize;
-    private float orthoGraphicSizeNormalized;
 
     void Awake()
     {
@@ -19,9 +18,8 @@ public class MinimapCameraFrame : MonoBehaviour
         startingSize = spriteRenderer.size;
     }
 
-    void Update()
+    void LateUpdate()
     {
-        orthoGraphicSizeNormalized = cameraHandler.OrthoGraphicSizeNormalized;
-        spriteRenderer.size = startingSize * orthoGraphicSizeNormalized;
+        spriteRenderer.size = startingSize * cameraHandler.OrthoGraphicSizeNormalized;
     }
 }
