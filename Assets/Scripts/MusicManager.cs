@@ -21,6 +21,11 @@ public class MusicManager : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        audioSource.volume = PlayerPrefs.GetFloat("MusicVolume", 1f);
+    }
+
     public void PlayMusic(MusicType musicType)
     {
         audioSource.clip = musicAudioDictionary[musicType];

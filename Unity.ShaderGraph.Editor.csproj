@@ -81,8 +81,8 @@
      <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Data\Nodes\Input\Texture\SampleTexture2DArrayNode.cs" />
      <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Generation\Enumerations\KeywordDefinition.cs" />
      <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Data\Nodes\IPropertyFromNode.cs" />
-     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Generation\Descriptors\SubShaderDescriptor.cs" />
      <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Data\Nodes\Utility\SubGraphNode.cs" />
+     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Generation\Descriptors\SubShaderDescriptor.cs" />
      <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Drawing\Blackboard\SGBlackboardRow.cs" />
      <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Data\Nodes\Input\Texture\SamplerStateNode.cs" />
      <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Drawing\Inspector\PropertyDrawers\SampleTexture2DNodePropertyDrawer.cs" />
@@ -431,10 +431,10 @@
      <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Drawing\ViewModels\BlackboardViewModel.cs" />
      <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Generation\Targets\BuiltIn\Editor\ShaderGraph\Targets\BuiltInUnlitSubTarget.cs" />
      <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Data\Nodes\Math\Wave\SawtoothWaveNode.cs" />
-     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Data\Nodes\FormerNameAttribute.cs" />
      <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Data\Graphs\Matrix3ShaderProperty.cs" />
      <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Drawing\Views\MaterialGraphView.cs" />
      <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Data\Nodes\Input\Texture\SampleVirtualTextureNode.cs" />
+     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Data\Nodes\FormerNameAttribute.cs" />
      <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Generation\Target.cs" />
      <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Data\Graphs\GradientMaterialSlot.cs" />
      <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Data\Util\TextUtil.cs" />
@@ -1481,13 +1481,13 @@
       <Project>{2159d1fa-bb36-6f20-e609-25f2c9fcf646}</Project>
       <Name>UnityEngine.UI</Name>
     </ProjectReference>
-    <ProjectReference Include="UnityEngine.TestRunner.csproj">
-      <Project>{0ad113d2-fa8e-69ec-06bf-d6a2a760735f}</Project>
-      <Name>UnityEngine.TestRunner</Name>
-    </ProjectReference>
     <ProjectReference Include="UnityEditor.TestRunner.csproj">
       <Project>{9069bc07-e942-ba4e-08b4-9f3ea080be4f}</Project>
       <Name>UnityEditor.TestRunner</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEngine.TestRunner.csproj">
+      <Project>{0ad113d2-fa8e-69ec-06bf-d6a2a760735f}</Project>
+      <Name>UnityEngine.TestRunner</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

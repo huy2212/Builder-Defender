@@ -5,16 +5,32 @@ using UnityEngine.UI;
 
 public class MainMenuUI : MonoBehaviour
 {
+    private Transform buttonsTransform;
+    private GameObject OptionsUI;
+
     void Awake()
     {
-        transform.Find("PlayButton").GetComponent<Button>().onClick.AddListener(() =>
+        buttonsTransform = transform.Find("Buttons");
+        OptionsUI = transform.Find("OptionsUI").gameObject;
+
+        buttonsTransform.Find("PlayButton").GetComponent<Button>().onClick.AddListener(() =>
         {
             GameSceneManager.LoadScene(GameSceneManager.Scene.Game);
         });
 
-        transform.Find("QuitButton").GetComponent<Button>().onClick.AddListener(() =>
+        buttonsTransform.Find("SettingsButton").GetComponent<Button>().onClick.AddListener(() =>
+        {
+            OptionsUI.SetActive(true);
+        });
+
+        buttonsTransform.Find("QuitButton").GetComponent<Button>().onClick.AddListener(() =>
         {
             Application.Quit();
         });
+    }
+
+    void Start()
+    {
+        OptionsUI.SetActive(false);
     }
 }

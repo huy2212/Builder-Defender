@@ -21,6 +21,11 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        audioSource.volume = PlayerPrefs.GetFloat("SoundVolume", 1f);
+    }
+
     public void PlaySound(SoundType soundType)
     {
         audioSource.PlayOneShot(soundAudioDictionary[soundType]);
